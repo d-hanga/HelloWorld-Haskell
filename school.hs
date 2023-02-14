@@ -198,7 +198,7 @@ puttogethersortedlists (x1:xs1) (x2:xs2)
 mergesort :: Ord a => [a] -> [a]
 mergesort [x] = [x]
 mergesort xs = puttogethersortedlists (mergesort a) (mergesort b)
-    where a = slice 0 (ceiling (fromIntegral(len xs)/2)) xs
+    where a = slice 0 (ceiling (fromIntegral (len xs)/2)) xs
           b = slice (ceiling (fromIntegral (len xs)/2)) (len xs + 1) xs
 
 
@@ -241,8 +241,9 @@ greater pivot (x:xs)
     | x > pivot = x:greater pivot xs
     | otherwise = greater pivot xs
 
-test :: (Ord a, Eq a) => a -> [a] -> [[a]]
-test pivot 
+-- test :: (Ord a, Eq a) => a -> [a] -> [[a]]
+-- test pivot 
+-- CREATE MORE OPTIMIZED CHECK AS TEST AND RENAME IT AFTERWARDS
 
 check :: (Ord a, Eq a) => a -> [a] -> [[a]]
 check pivot xs = [smaller pivot xs, same pivot xs, greater pivot xs]
@@ -252,9 +253,6 @@ quicksort [] = []
 quicksort [x] = [x]
 quicksort (x:xs) = quicksort (getelement comparison 0) ++ getelement comparison 1 ++ quicksort (getelement comparison 2)
     where comparison = check x (x:xs)
-
-
-
 
 
 
